@@ -1,8 +1,26 @@
-# React + Vite
+# React 动态表格组件，支持合并单元格和排序功能
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+该项目是一个基于 React 的动态表格组件，支持单元格合并和排序功能。表格根据提供的输入动态调整其标题和数据，并支持在分组单元格内排序，同时保持合并单元格的顺序。
 
-Currently, two official plugins are available:
+## 功能特性
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **动态标题和数据**：表格标题和数据可以从 API 获取或动态提供。
+- **合并单元格**：具有相同类别（category）和子类别（subCategory）值的单元格将被合并。
+- **排序功能**：支持在分组单元格内对列进行排序，但保持合并单元格的顺序不变。
+
+## 安装和运行
+
+1. 克隆该仓库后：
+    ```sh
+    cd merged-sort-table
+    ```
+
+2. 安装依赖：
+    ```sh
+    npm install
+    ```
+
+3. 运行开发服务器：
+    ```sh
+    npm start
+    ```

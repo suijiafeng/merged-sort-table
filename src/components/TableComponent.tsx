@@ -1,7 +1,30 @@
 import React from 'react';
 import SortableButton from './SortableButton';
 
-const TableComponent = ({ columns, data, sortConfig, onSortChange }) => {
+interface TableComponentProps {
+  columns: Column[];
+  data: TableRow[];
+  sortConfig: SortConfig;
+  onSortChange: (columnKey: string, order: 'asc' | 'desc' | 'default') => void;
+}
+
+interface Column {
+  key: string;
+  title: string;
+}
+
+interface TableRow {
+  [key: string]: any;
+  categoryRowSpan?: number;
+  subCategoryRowSpan?: number;
+}
+
+interface SortConfig {
+  key: string;
+  order: 'asc' | 'desc' | 'default';
+}
+
+const TableComponent: React.FC<TableComponentProps> = ({ columns, data, sortConfig, onSortChange }) => {
   return (
     <table border="1">
       <thead>
@@ -11,8 +34,7 @@ const TableComponent = ({ columns, data, sortConfig, onSortChange }) => {
               key={col.key}
               columnKey={col.key}
               title={col.title}
-              sortable={col.sortable}
-              sortConfig={sortConfig}
+              activeSortKey={sortConfig.key}
               onSortChange={onSortChange}
             />
           ))}
@@ -22,10 +44,10 @@ const TableComponent = ({ columns, data, sortConfig, onSortChange }) => {
         {data.map((item, index) => (
           <tr key={index}>
             {columns.map((col) => {
-              if (col.key === 'category' && item.categoryRowSpan > 0) {
+              if (col.key === 'category' && item.categoryRowSpan && item.categoryRowSpan > 0) {
                 return <td key={col.key} rowSpan={item.categoryRowSpan}>{item[col.key]}</td>;
               }
-              if (col.key === 'subCategory' && item.subCategoryRowSpan > 0) {
+              if (col.key === 'subCategory' && item.subCategoryRowSpan && item.subCategoryRowSpan > 0) {
                 return <td key={col.key} rowSpan={item.subCategoryRowSpan}>{item[col.key]}</td>;
               }
               if (col.key !== 'category' && col.key !== 'subCategory') {

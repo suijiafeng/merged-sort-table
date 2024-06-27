@@ -1,0 +1,27 @@
+.sortable-button {
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  position: relative;
+}
+
+.sortable-button .sort-icons {
+  display: inline-block;
+  margin-left: 5px;
+  line-height: 1;
+}
+
+.sortable-button .sort-icon {
+  display: block;
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.sortable-button .sort-icon.active {
+  opacity: 1;
+  color: blue;
+}
+
+.sortable-button.active {
+  background-color: #f0f0f0;
+}
